@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="user"
+      type="com.gis.featureusers.presentation.ui.usersscreen.UsersListItem" />
+
+    <variable
+      name="imgLoader"
+      type="com.gis.utils.domain.ImageLoader" />
+
+    <variable
+      name="loading"
+      type="Boolean"/>
+
+    <import type="com.gis.featureusers.R" />
+
+    <import type="android.view.View" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+      android:id="@+id/ivUserImg"
+      android:layout_width="@dimen/user_img_size"
+      android:layout_height="@dimen/user_img_size"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="16dp"
+      android:imgLoader="@{imgLoader}"
+      android:loadImg="@{user.avatarUrl}"
+      android:loadPlaceholder="@{R.drawable.icon_user_placeholder}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+      android:id="@+id/etUserFirstName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="16dp"
+      android:hint="@string/hint_first_name"
+      android:singleLine="true"
+      android:enabled="@{!loading}"
+      android:text='@{user.firstName}'
+      android:textColor="@android:color/black"
+      app:layout_constraintBottom_toTopOf="@id/etUserLastName"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/ivUserImg"
+      app:layout_constraintTop_toTopOf="@id/ivUserImg"
+      tools:text="Robert" />
+
+    <EditText
+      android:id="@+id/etUserLastName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:hint="@string/hint_last_name"
+      android:singleLine="true"
+      android:enabled="@{!loading}"
+      android:text='@{user.lastName}'
+      android:textColor="@android:color/black"
+      app:layout_constraintBottom_toTopOf="@id/etUserEmail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/ivUserImg"
+      app:layout_constraintTop_toBottomOf="@id/etUserFirstName"
+      tools:text="Martin" />
+
+    <EditText
+      android:id="@+id/etUserEmail"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="8dp"
+      android:hint="@string/hint_email"
+      android:singleLine="true"
+      android:enabled="@{!loading}"
+      android:text="@{user.email}"
+      android:textColor="@android:color/black"
+      app:layout_constraintBottom_toBottomOf="@id/ivUserImg"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/ivUserImg"
+      app:layout_constraintTop_toBottomOf="@id/etUserLastName"
+      tools:text="user@mail.ru" />
+
+    <ProgressBar
+      android:id="@+id/pbLoading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

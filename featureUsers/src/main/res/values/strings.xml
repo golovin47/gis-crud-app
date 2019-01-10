@@ -1,0 +1,13 @@
+<resources>
+  <string name="app_name">FeatureUsersImpl</string>
+
+  <string name="users_screen_title">Users</string>
+  <string name="title_search">Search</string>
+  <string name="cancel">Cancel</string>
+  <string name="ok">Ok</string>
+  <string name="hint_first_name">First Name</string>
+  <string name="hint_last_name">Last Name</string>
+  <string name="hint_email">Email</string>
+  <string name="error_field_empty">Field should not be empty</string>
+  <string name="error_email_invalid">Email is invalid</string>
+</resources>

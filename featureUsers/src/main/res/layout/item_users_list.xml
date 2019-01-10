@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="user"
+      type="com.gis.featureusers.presentation.ui.usersscreen.UsersListItem" />
+
+    <variable
+      name="imgLoader"
+      type="com.gis.utils.domain.ImageLoader" />
+
+    <import type="com.gis.featureusers.R"/>
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/itemUserRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+      android:id="@+id/ivUserImg"
+      android:layout_width="@dimen/user_img_size"
+      android:layout_height="@dimen/user_img_size"
+      android:layout_marginStart="8dp"
+      android:imgLoader="@{imgLoader}"
+      android:loadImg="@{user.avatarUrl}"
+      android:loadPlaceholder="@{R.drawable.icon_user_placeholder}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/tvUserName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:text='@{user.firstName + " " + user.lastName}'
+      android:textColor="@android:color/black"
+      app:layout_constrainedWidth="true"
+      app:layout_constraintBottom_toTopOf="@id/tvUserEmail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/ivUserImg"
+      app:layout_constraintTop_toTopOf="@id/ivUserImg"
+      tools:text="Robert Martin" />
+
+    <TextView
+      android:id="@+id/tvUserEmail"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:text="@{user.email}"
+      android:textColor="@android:color/black"
+      app:layout_constrainedWidth="true"
+      app:layout_constraintBottom_toBottomOf="@id/ivUserImg"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/ivUserImg"
+      app:layout_constraintTop_toBottomOf="@id/tvUserName"
+      tools:text="user@mail.ru" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
